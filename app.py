@@ -84,8 +84,9 @@ if st.button('Predict'):
     
     # Make prediction
     prediction = lasso.predict(input_scaled)
-    
-    st.success(f'Predicted Revenue : ₹ {prediction[0]:.2f}')
+
+    roi = (prediction-budget)/budget*100
+    st.success(f'Predicted Roi: {roi[0]:.2f}%')
 
 
 
