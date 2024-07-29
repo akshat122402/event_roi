@@ -1,24 +1,14 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import gdown
-import os
-
-def download_file_from_gdrive(gdrive_url, dest):
-    gdown.download(gdrive_url, dest, quiet=False)
-
-model_gdrive_url = 'https://drive.google.com/file/d/1N04-xajD0Vv5hMYVkkvHojrNX1p8q2UK/view' 
-
-model_file = 'sponsor_roi_model.pkl'
-
-# Download if not already downloaded
-if not os.path.exists(model_file):
-    download_file_from_gdrive(model_gdrive_url, model_file)
+import gzip
+import shutil
 
 
 # Load the model and scaler
-model = joblib.load(model_file)
+model = joblib.load('sponsor_roi_model.pkl')
 scaler = joblib.load('scaler1.pkl')
+
 # Function to predict ROI
 def predict_roi(input_data):
     # Predict revenue
