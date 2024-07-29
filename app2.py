@@ -7,7 +7,7 @@ import os
 def download_file_from_gdrive(gdrive_url, dest):
     gdown.download(gdrive_url, dest, quiet=False)
 
-model_gdrive_url = 'https://drive.google.com/file/d/1N04-xajD0Vv5hMYVkkvHojrNX1p8q2UK/view?usp=sharing' 
+model_gdrive_url = 'https://drive.google.com/file/d/1N04-xajD0Vv5hMYVkkvHojrNX1p8q2UK/view' 
 
 model_file = 'sponsor_roi_model.pkl'
 
