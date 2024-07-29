@@ -4,6 +4,9 @@ import joblib
 import gzip
 import shutil
 
+import warnings
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
 # Load the model and scaler
 model = joblib.load('sponsor_roi_model.pkl')
