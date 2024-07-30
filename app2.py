@@ -4,9 +4,6 @@ import joblib
 import gzip
 import shutil
 
-import warnings
-warnings.filterwarnings("ignore", message="numpy.dtype size changed")
-warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
 # Load the model and scaler
 model = joblib.load('sponsor_roi_model.pkl')
@@ -53,7 +50,8 @@ event_type = st.selectbox('Event Type', [
 ])
 
 event_duration = st.number_input('Event Duration in Days', min_value=1, max_value=7, value=1)
-expected_footfall = st.number_input('Expected Footfall', min_value=100, max_value=1000000, value=1000)
+expected_min_footfall = st.number_input('Expected Minimum Footfall', min_value=100, max_value=1000000, value=1000)
+expected_max_footfall = st.number_input('Expected Maximum Footfall', min_value=100, max_value=1000000, value=10000)
 ticket_price = st.number_input('Ticket Price', min_value=0, max_value=5000, value=100)
 
 sponsor_type = st.selectbox('Sponsor Type', [
@@ -72,7 +70,7 @@ if st.button('Predict ROI'):
     input_data = pd.DataFrame({
         'Event Type': [event_type],
         'Event Duration in Days': [event_duration],
-        'Expected Footfall': [expected_footfall],
+        'Expected Footfall': [(expected_max_footfall+expected_min_footfall)/2],
         'Ticket Price': [ticket_price],
         'Sponsor Type': [sponsor_type],
         'Sponsor Cost': [sponsor_cost]
