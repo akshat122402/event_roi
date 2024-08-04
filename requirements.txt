@@ -5,3 +5,5 @@ gdown==5.2.0
 streamlit==1.36.0
 joblib==1.4.2
 pandas==2.2.2
+reportlab==4.2.2
+seaborn==0.13.2
